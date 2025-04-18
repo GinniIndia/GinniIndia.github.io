@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ginni Garg - Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -66,6 +66,10 @@
     a:hover {
       text-decoration: underline;
     }
+    .tech {
+      font-style: italic;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -98,44 +102,73 @@
     <h2>Projects</h2>
     <div class="projects">
       <div class="project-item">
-        <h3>Scientist ‘B’ (Senior Software Engineer) @ CDOT, Delhi (April 2024 - Present)</h3>
-        <ul>
-          <li>Three Factor OAuth Service: Developed a scalable Microservice using JWT, TOTP and Digital Signature. Includes Client/User registration, Locking User, deployed on K8s with PVC-based logging and auto-purge.</li>
-          <li>Open Source Key Management System (KMS): Lead end-to-end development using Keycloak, Vault, Flask microservices with JWT & TOTP, secure secrets storage, admin/user roles.</li>
-          <li>Call Data Records (CDR): Middleware software to extract encrypted call history between client and TSP. SSLRestTemplate & AES-256 used.</li>
-          <li>Search Engine - Question_Answering: RAG Pipeline NLP system using Streamlit and HuggingFace models deployed on Hugging Face Spaces.</li>
-        </ul>
+        <h3>Three Factor OAuth Service @ CDOT</h3>
+        <p>Developed a scalable microservice from scratch that supports authentication using JWT, TOTP, and Digital Signature. Includes client and user registration, user locking mechanism, Nginx Gateway, and SSL/TLS over HTTPs. The app is deployed on Kubernetes with persistent volume claim (PVC) based logging. Autoscaling and load balancing is handled using HPA. Log deletion is automated via FIFO once PVC reaches 80-90% of capacity.</p>
+        <p class="tech">Tech Used: Flask, Docker, MySQL, Kubernetes, PVC, Nginx, HTTPS, Ingress, RSA Encryption</p>
       </div>
+
       <div class="project-item">
-        <h3>Software Engineer – II @ SirionLabs, Gurugram (Dec 2022 – May 2023)</h3>
-        <ul>
-          <li>AutoExtractionPython: Async microservices for OCR-based PDF parsing, NER, contract classification using Roberta, Regex, and ML pipelines.</li>
-        </ul>
+        <h3>Open Source Key Management System (KMS) @ CDOT</h3>
+        <p>Led end-to-end development of KMS using Keycloak for user management and Hashicorp Vault for secret management. Composed of three microservices: one for Keycloak, one for Vault, and one wrapper service to provide a unified interface. Supports 2FA using JWT and TOTP. Admin users have read/write access; normal users have read-only access. Log deletion is handled automatically.</p>
+        <p class="tech">Tech Used: Flask, Docker, MySQL, Kubernetes, PVC, Nginx, HTTPS, Ingress, Hashicorp Vault, Keycloak</p>
       </div>
+
       <div class="project-item">
-        <h3>Software Development Engineer – 2 @ Otipy, Gurugram (May 2022 – Nov 2022)</h3>
-        <ul>
-          <li>Inventory Management System: High throughput microservice (>2000 TPS) with Redis-lock.</li>
-          <li>Supplier Incentive: Quality-based supplier reward system.</li>
-          <li>Optimization: Enhanced API performance and database queries.</li>
-          <li>Warehouse Management System: Automated stakeholder dashboards.</li>
-        </ul>
+        <h3>Call Data Records (CDR) System</h3>
+        <p>Middleware that extracts call history for a mobile number over a time period. All data is encrypted. Custom-built SSLRestTemplate used for HTTPS-based client communication. Authentication involves AES 256-bit encryption and hash validation. Full test suite and environment setup included.</p>
+        <p class="tech">Tech Used: Java Spring, MySQL, Kubernetes, PVC, Nginx, HTTPS, AES Encryption</p>
       </div>
+
       <div class="project-item">
-        <h3>Software Engineer @ Arcesium (Remote) (Aug 2020 – May 2022)</h3>
-        <ul>
-          <li>Carbon: Created financial reports for De-Shaw’s Back Office, handling dividends, swaps, and reconciliation with ETL and Flask.</li>
-          <li>Python Scripts: Data pipelines and crypto trade processors for Morgan Stanley, Coinbase, etc. with Flask, SQLite, Postgres, JWT/Kerberos Auth.</li>
-        </ul>
+        <h3>Search Engine – Question Answering (NLP)</h3>
+        <p>Built a question answering system over provided data using a Retrieval-Augmented Generation (RAG) pipeline. Uses NLP and LLM models and is deployed on Hugging Face Spaces.</p>
+        <p class="tech">Tech Used: Streamlit, Python, Hugging Face Spaces, T-5 Model, FAISS</p>
       </div>
+
       <div class="project-item">
-        <h3>Freelance Software/ML Engineer</h3>
-        <ul>
-          <li>Land Cover Classification: Satellite/hyperspectral image classifier using MLP-SVM. <a href="https://arxiv.org/abs/2101.00214">[Paper]</a></li>
-          <li>Covid Tracking App: GPS-based state-wide data tracking system with Swagger docs. (Go, MongoDB, Heroku)</li>
-          <li>Brain Tumor Detection: MRI classifier using PCA, SWT, GLCM with KNN/DT/RF ensemble. <a href="https://arxiv.org/abs/2101.00216">[Paper]</a></li>
-          <li>Real Time Plant Disease Classifier: Real-time ANN & K-means segmentation. <a href="https://arxiv.org/abs/2101.00215">[Paper]</a></li>
-        </ul>
+        <h3>AutoExtractionPython @ SirionLabs</h3>
+        <p>Async microservice application for parsing legal contract PDFs using OCR. Tasks include contract type prediction, named entity recognition (NER) for metadata, title extraction, and cosine similarity comparison for documents.</p>
+        <p class="tech">Tech Used: Flask, Spacy, NLP, Roberta, Regex, Pulsar, Python, Docanno</p>
+      </div>
+
+      <div class="project-item">
+        <h3>Inventory Management System @ Otipy</h3>
+        <p>Built a high-throughput inventory service supporting over 2000 transactions per second using Redis for distributed locking.</p>
+        <p><strong>Supplier Incentive:</strong> Designed reward system based on product quality.<br><strong>Optimization:</strong> Enhanced API and database performance.<br><strong>WMS:</strong> Automated stakeholder dashboards for warehouse insights.</p>
+        <p class="tech">Tech Used: Django, SQL, Redis, Celery, Kafka, Postman, S3, Authentication</p>
+      </div>
+
+      <div class="project-item">
+        <h3>Carbon Project @ Arcesium</h3>
+        <p>Generated DeShaw finance reports (CAT, FX, Wire Orders) with BO-to-FO reconciliation, swap resets, dividend tracking. Created from scratch using ETL and in-memory SQLite for performance.</p>
+        <p class="tech">Tech Used: ETL Framework, Flask, SQLite3, YAML, Gunicorn, Unit Testing</p>
+      </div>
+
+      <div class="project-item">
+        <h3>Python Scripts for Clients</h3>
+        <p>Built scripts for Morgan Stanley, Coinbase, and Black Stone to process trade/crypto data and generate Excel/CSV reports.</p>
+        <p class="tech">Tech Used: Flask, Async/Await Python, PostgreSQL, Gitlab, Kerberos & JWT Authentication</p>
+      </div>
+
+      <div class="project-item">
+        <h3>Land Cover Classification</h3>
+        <p>Classified satellite and hyperspectral images using MLP-SVM classifiers.<br><a href="https://arxiv.org/abs/2101.00214">Research Paper</a></p>
+      </div>
+
+      <div class="project-item">
+        <h3>Covid Patient Tracker</h3>
+        <p>Used GPS to fetch and store India's state-wise COVID-19 data. REST APIs documented with Swagger. Hosted on Heroku.</p>
+        <p class="tech">Tech Used: Go (Echo), MongoDB, Swagger, Heroku</p>
+      </div>
+
+      <div class="project-item">
+        <h3>Brain Tumor Detection</h3>
+        <p>Processed MRI images with PCA+SWT+GLCM features and classified using KNN+DT+RF ensemble classifier.<br><a href="https://arxiv.org/abs/2101.00216">Research Paper</a></p>
+      </div>
+
+      <div class="project-item">
+        <h3>Plant Disease Detection</h3>
+        <p>Built real-time disease classification system for plant leaves using ANN and K-means segmentation.<br><a href="https://arxiv.org/abs/2101.00215">Research Paper</a></p>
       </div>
     </div>
 
