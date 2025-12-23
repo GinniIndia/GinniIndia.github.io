@@ -384,7 +384,7 @@
                <p>Architected a Naive Bayes classifier from scratch for spam email classification using Bayesian probability theory. Applied feature independence assumptions while implementing conditional probability distributions for word occurrences. Integrated Laplace smoothing to ensure all vocabulary elements appear in both spam and non-spam training sets, eliminating P(word|class)=0 scenarios. Enhanced numerical stability through logarithmic transformation of probability scores, preventing misclassification due to floating-point underflow. Delivered a robust classification system achieving 98% accuracy on testing datasets<br>
                   <b>Tech:</b> Python, Bayesian Probability, Increasing Function (Log)
                </p>
-               <h3> FakeFinder – AI-Generated Image Detection System </h3>
+               <h3> FakeFinder – AI-Generated Image Detection System (CNN Trained from Scratch)</h3>
                <p>
         Developed <strong>FakeFinder</strong>, an end-to-end deep learning system to distinguish
         <strong>AI-generated images</strong> from <strong>real images</strong> using flexible
@@ -526,9 +526,17 @@
         </tr>
     </tbody>
 </table>
-
     </p>
-    
+      <h3> FakeFinder – AI-Generated Image Detection System (Fine-Tune MobileNetV3-Large,)</h3>
+    <p>
+    Developed a deep learning–based image classification system to distinguish AI-generated images from real images using a subset of the AI-Generated Images vs Real Images dataset. Implemented an end-to-end training and evaluation pipeline using PyTorch, including dataset loading, image preprocessing, data augmentation, and efficient batching through DataLoaders.
+
+Fine-tuned a pre-trained MobileNetV3-Large model by freezing its feature extraction layers and replacing the final classifier head to adapt the network for binary classification. Applied transfer learning techniques to significantly improve model performance with minimal training.
+
+Achieved 82% test accuracy with just one training epoch using MobileNetV3-Large, outperforming a CNN model trained from scratch, which achieved ~72% accuracy after three epochs, demonstrating the effectiveness of transfer learning for limited-data scenarios.
+
+<b>Tech:</b> PyTorch, MobileNetV3-Large, Transfer Learning, Image Classification, Data Augmentation, CNNs
+    </p>
                
             </div>
          </div>
