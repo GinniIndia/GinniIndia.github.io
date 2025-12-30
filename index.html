@@ -386,158 +386,159 @@
                </p>
                <h3> FakeFinder – AI-Generated Image Detection System (CNN Trained from Scratch)</h3>
                <p>
-        Developed <strong>FakeFinder</strong>, an end-to-end deep learning system to distinguish
-        <strong>AI-generated images</strong> from <strong>real images</strong> using flexible
-        convolutional neural networks (CNNs) and automated hyperparameter optimization.
-    <ul>
-        <li>
-            Designed <strong>dynamically configurable CNN architectures</strong> using
-            <code>nn.Sequential</code>, enabling flexible adjustment of network depth, filter sizes,
-            kernel dimensions, and regularization parameters without hard-coding model structures.
-        </li>
-        <li>
-            Constructed a <strong>robust hyperparameter search space</strong> and implemented a
-            custom <strong>Optuna objective function</strong> to systematically optimize model
-            performance.
-        </li>
-        <li>
-            Executed <strong>Optuna studies</strong> to automatically explore and identify effective
-            CNN configurations across multiple trials.
-        </li>
-        <li>
-            Evaluated models using both <strong>predictive performance</strong> and
-            <strong>efficiency metrics</strong> (accuracy, model size, inference time) to support
-            deployment-aware decision making.
-        </li>
-        <li>
-            Applied advanced <strong>model selection strategies</strong>, including:
-            <ul>
-                <li>Weighted scoring to balance accuracy and computational efficiency</li>
-                <li>Constraint-based filtering to enforce strict limits on resource usage</li>
-            </ul>
-        </li>
-        <li>
-            Refined and selected optimal CNN models by analyzing trade-offs between accuracy and
-            performance constraints.
-        </li>
-    </ul>
-    <b>Tech:</b> PyTorch, Flexible CNN Architectures, Optuna (Tree-Structured Parzen Estimator (TPE) is a Bayesian optimization algorithm), Model Selection (Weighted &amp; Constraint-Based),
-        AI-Generated vs Real Images Dataset (subset)
-    <table>
-    <caption>Optuna Hyperparameter Optimization Results</caption>
-    <thead>
-        <tr>
-            <th>number</th>
-            <th>acc</th>
-            <th>batch</th>
-            <th>dropout_rate</th>
-            <th>fc_size</th>
-            <th>k_s_l0</th>
-            <th>k_s_l1</th>
-            <th>k_s_l2</th>
-            <th>lr</th>
-            <th>n_f_l0</th>
-            <th>n_f_l1</th>
-            <th>n_f_l2</th>
-            <th>n_layers</th>
-            <th>resolution</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>15</td>
-            <td>0.732</td>
-            <td>16</td>
-            <td>0.170192</td>
-            <td>384</td>
-            <td>5</td>
-            <td>3</td>
-            <td>NaN</td>
-            <td>0.000732</td>
-            <td>32</td>
-            <td>24</td>
-            <td>NaN</td>
-            <td>2</td>
-            <td>16</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>0.715</td>
-            <td>8</td>
-            <td>0.200294</td>
-            <td>384</td>
-            <td>5</td>
-            <td>3</td>
-            <td>NaN</td>
-            <td>0.001072</td>
-            <td>24</td>
-            <td>16</td>
-            <td>NaN</td>
-            <td>2</td>
-            <td>16</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>0.715</td>
-            <td>16</td>
-            <td>0.134501</td>
-            <td>384</td>
-            <td>3</td>
-            <td>3</td>
-            <td>3</td>
-            <td>0.000135</td>
-            <td>64</td>
-            <td>56</td>
-            <td>16</td>
-            <td>3</td>
-            <td>16</td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>0.692</td>
-            <td>16</td>
-            <td>0.151364</td>
-            <td>256</td>
-            <td>5</td>
-            <td>3</td>
-            <td>NaN</td>
-            <td>0.000109</td>
-            <td>32</td>
-            <td>40</td>
-            <td>NaN</td>
-            <td>2</td>
-            <td>16</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0.690</td>
-            <td>16</td>
-            <td>0.395933</td>
-            <td>128</td>
-            <td>3</td>
-            <td>5</td>
-            <td>NaN</td>
-            <td>0.001220</td>
-            <td>56</td>
-            <td>16</td>
-            <td>NaN</td>
-            <td>2</td>
-            <td>32</td>
-        </tr>
-    </tbody>
-</table>
-    </p>
-      <h3> FakeFinder – AI-Generated Image Detection System (Fine-Tune MobileNetV3-Large,)</h3>
-    <p>
-    Developed a deep learning–based image classification system to distinguish AI-generated images from real images using a subset of the AI-Generated Images vs Real Images dataset. Implemented an end-to-end training and evaluation pipeline using PyTorch, including dataset loading, image preprocessing, data augmentation, and efficient batching through DataLoaders.
-
-Fine-tuned a pre-trained MobileNetV3-Large model by freezing its feature extraction layers and replacing the final classifier head to adapt the network for binary classification. Applied transfer learning techniques to significantly improve model performance with minimal training.
-
-Achieved 82% test accuracy with just one training epoch using MobileNetV3-Large, outperforming a CNN model trained from scratch, which achieved ~72% accuracy after three epochs, demonstrating the effectiveness of transfer learning for limited-data scenarios.
-
-<b>Tech:</b> PyTorch, MobileNetV3-Large, Transfer Learning, Image Classification, Data Augmentation, CNNs
-    </p>
-               
+                  Developed <strong>FakeFinder</strong>, an end-to-end deep learning system to distinguish
+                  <strong>AI-generated images</strong> from <strong>real images</strong> using flexible
+                  convolutional neural networks (CNNs) and automated hyperparameter optimization.
+               <ul>
+                  <li>
+                     Designed <strong>dynamically configurable CNN architectures</strong> using
+                     <code>nn.Sequential</code>, enabling flexible adjustment of network depth, filter sizes,
+                     kernel dimensions, and regularization parameters without hard-coding model structures.
+                  </li>
+                  <li>
+                     Constructed a <strong>robust hyperparameter search space</strong> and implemented a
+                     custom <strong>Optuna objective function</strong> to systematically optimize model
+                     performance.
+                  </li>
+                  <li>
+                     Executed <strong>Optuna studies</strong> to automatically explore and identify effective
+                     CNN configurations across multiple trials.
+                  </li>
+                  <li>
+                     Evaluated models using both <strong>predictive performance</strong> and
+                     <strong>efficiency metrics</strong> (accuracy, model size, inference time) to support
+                     deployment-aware decision making.
+                  </li>
+                  <li>
+                     Applied advanced <strong>model selection strategies</strong>, including:
+                     <ul>
+                        <li>Weighted scoring to balance accuracy and computational efficiency</li>
+                        <li>Constraint-based filtering to enforce strict limits on resource usage</li>
+                     </ul>
+                  </li>
+                  <li>
+                     Refined and selected optimal CNN models by analyzing trade-offs between accuracy and
+                     performance constraints.
+                  </li>
+               </ul>
+               <b>Tech:</b> PyTorch, Flexible CNN Architectures, Optuna (Tree-Structured Parzen Estimator (TPE) is a Bayesian optimization algorithm), Model Selection (Weighted &amp; Constraint-Based),
+               AI-Generated vs Real Images Dataset (subset)
+               <table>
+                  <caption>Optuna Hyperparameter Optimization Results</caption>
+                  <thead>
+                     <tr>
+                        <th>number</th>
+                        <th>acc</th>
+                        <th>batch</th>
+                        <th>dropout_rate</th>
+                        <th>fc_size</th>
+                        <th>k_s_l0</th>
+                        <th>k_s_l1</th>
+                        <th>k_s_l2</th>
+                        <th>lr</th>
+                        <th>n_f_l0</th>
+                        <th>n_f_l1</th>
+                        <th>n_f_l2</th>
+                        <th>n_layers</th>
+                        <th>resolution</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>15</td>
+                        <td>0.732</td>
+                        <td>16</td>
+                        <td>0.170192</td>
+                        <td>384</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>NaN</td>
+                        <td>0.000732</td>
+                        <td>32</td>
+                        <td>24</td>
+                        <td>NaN</td>
+                        <td>2</td>
+                        <td>16</td>
+                     </tr>
+                     <tr>
+                        <td>9</td>
+                        <td>0.715</td>
+                        <td>8</td>
+                        <td>0.200294</td>
+                        <td>384</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>NaN</td>
+                        <td>0.001072</td>
+                        <td>24</td>
+                        <td>16</td>
+                        <td>NaN</td>
+                        <td>2</td>
+                        <td>16</td>
+                     </tr>
+                     <tr>
+                        <td>6</td>
+                        <td>0.715</td>
+                        <td>16</td>
+                        <td>0.134501</td>
+                        <td>384</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0.000135</td>
+                        <td>64</td>
+                        <td>56</td>
+                        <td>16</td>
+                        <td>3</td>
+                        <td>16</td>
+                     </tr>
+                     <tr>
+                        <td>16</td>
+                        <td>0.692</td>
+                        <td>16</td>
+                        <td>0.151364</td>
+                        <td>256</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>NaN</td>
+                        <td>0.000109</td>
+                        <td>32</td>
+                        <td>40</td>
+                        <td>NaN</td>
+                        <td>2</td>
+                        <td>16</td>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>0.690</td>
+                        <td>16</td>
+                        <td>0.395933</td>
+                        <td>128</td>
+                        <td>3</td>
+                        <td>5</td>
+                        <td>NaN</td>
+                        <td>0.001220</td>
+                        <td>56</td>
+                        <td>16</td>
+                        <td>NaN</td>
+                        <td>2</td>
+                        <td>32</td>
+                     </tr>
+                  </tbody>
+               </table>
+               </p>
+               <h3> FakeFinder – AI-Generated Image Detection System (Fine-Tune MobileNetV3-Large,)</h3>
+               <p>
+                  Developed a deep learning–based image classification system to distinguish AI-generated images from real images using a subset of the AI-Generated Images vs Real Images dataset. Implemented an end-to-end training and evaluation pipeline using PyTorch, including dataset loading, image preprocessing, data augmentation, and efficient batching through DataLoaders.
+                  Fine-tuned a pre-trained MobileNetV3-Large model by freezing its feature extraction layers and replacing the final classifier head to adapt the network for binary classification. Applied transfer learning techniques to significantly improve model performance with minimal training.
+                  Achieved 82% test accuracy with just one training epoch using MobileNetV3-Large, outperforming a CNN model trained from scratch, which achieved ~72% accuracy after three epochs, demonstrating the effectiveness of transfer learning for limited-data scenarios.<br>
+                  <b>Tech:</b> PyTorch, MobileNetV3-Large, Transfer Learning, Image Classification, Data Augmentation, CNNs
+               </p>
+               <h3> Pneumonia Diagnostic AI Assistant — Chest X-Ray Classification</h3>
+               <p>
+                  Built an image classification model to distinguish Normal, Bacterial Pneumonia, and Viral Pneumonia using the Chest X-Ray dataset. Implemented a clean training pipeline with PyTorch Lightning, including a LightningDataModule for preprocessing and a LightningModule encapsulating ResNet18 (fine-tuned on the classifier head and last two conv layers), loss, Accuracy metrics, and Adam optimizer. Configured a Lightning Trainer with EarlyStopping (callback), ModelCheckpoint, and LR scheduling (ReduceLROnPlateau) to automate training. Achieved ~90% test accuracy with limited epochs.<br>
+                  <b>Tech:</b> PyTorch Lightning, ResNet18 (partial fine-tuning), AdamW, ReduceLROnPlateau, EarlyStopping
+               </p>
             </div>
          </div>
          <!-- Courses -->
@@ -568,6 +569,8 @@ Achieved 82% test accuracy with just one training epoch using MobileNetV3-Large,
                   <li class="course-row">Linear Algebra for Machine Learning and Data Science <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/93C2DW8F2LO1" target="_blank">Certificate</a></span></li>
                   <li class="course-row">Calculus for Machine Learning and Data Science <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/ROZI2BLED66B" target="_blank">Certificate</a></span></li>
                   <li class="course-row">Probability & Statistics for Machine Learning & Data Science <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/EJFMJKKU6021" target="_blank">Certificate</a></span></li>
+                  <li class="course-row">PyTorch: Fundamentals <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/2EM5PXXZ8AOR" target="_blank">Certificate</a></span></li>
+                  <li class="course-row">PyTorch: Techniques and Ecosystem Tools <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/MLKFYRH19FTD" target="_blank">Certificate</a></span></li>
                </ul>
             </div>
             <div class="card">
@@ -603,8 +606,9 @@ Achieved 82% test accuracy with just one training epoch using MobileNetV3-Large,
                   <li>Reinforcement Learning (PPO, GRPO), LoRA: PEFT, MLOps, Phoenix and Open Telemetry</li>
                   <li>Smolagents, Ollama, Qwen, Chain-of-Thought Reasoning, ReAct Model, Langchain, LangGraph</li>
                   <li>Linear Algebra, Calculus, Probability & Statistics for Machine Learning & Data Science</li>
-                  <li>Content based Filtering Recommendation System, PCA</li>
+                  <li>Content based Filtering Recommendation System, PCA, DataLoader (Pinned-Memory, Gradient Accumulation)</li>
                   <li>Trustworthy AI, Responsible AI, Fairness, Baises, Ethics & Societal Challenges in AI</li>
+                  <li>TorchVision, Partial/Full Fine-Tuning, Resnet18, ImageNet, Step LR, Reduce LR on Plateau, and Cosine Annealing LR</li>
                </ul>
             </div>
             <div class="card">
