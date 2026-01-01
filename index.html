@@ -539,6 +539,10 @@
                   Built an image classification model to distinguish Normal, Bacterial Pneumonia, and Viral Pneumonia using the Chest X-Ray dataset. Implemented a clean training pipeline with PyTorch Lightning, including a LightningDataModule for preprocessing and a LightningModule encapsulating ResNet18 (fine-tuned on the classifier head and last two conv layers), loss, Accuracy metrics, and Adam optimizer. Configured a Lightning Trainer with EarlyStopping (callback), ModelCheckpoint, and LR scheduling (ReduceLROnPlateau) to automate training. Achieved ~90% test accuracy with limited epochs.<br>
                   <b>Tech:</b> PyTorch Lightning, ResNet18 (partial fine-tuning), AdamW, ReduceLROnPlateau, EarlyStopping
                </p>
+               <h3> Face Recognition-Based Authentication System </h3>
+               <p> Developed an application enabling registration of new users using facial images and subsequent identification/authentication based on stored faces. Implemented embedding generation using ArcFace, producing 512-dimensional vectors for each registered face. Used Weaviate DB with HNSW (Hierarchical Navigable Small World) graphs to efficiently index and search embeddings using cosine similarity. Authentication logic: if cosine similarity > 60%, the input face is considered a match. Built a user-friendly Gradio interface for image input, registration, and real-time identification. Applied transfer learning for feature extraction, ensuring high accuracy with minimal data. Optimized workflow for fast search and retrieval of embeddings, supporting scalable face-based authentication.<br>
+               <b>Tech:</b>Python, ArcFace, Gradio, Weaviate, Transfer Learning
+               </p>
             </div>
          </div>
          <!-- Courses -->
