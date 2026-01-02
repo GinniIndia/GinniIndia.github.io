@@ -544,8 +544,8 @@
                <b>Tech:</b> Python, ArcFace, Gradio, Weaviate, Transfer Learning
                </p>
                <h3> AI Powered Visual Search Engine for Fashion Store </h3>
-               <p>Developed an AI-based visual search system that retrieves visually similar fashion items from a catalog using deep metric learning. Trained a Siamese Network from scratch on the clothing-dataset-small, covering seven apparel classes: dress, hat, longsleeve, pants, shoes, shorts, and t-shirt. Images were resized to 64×64, and the network learned 276-dimensional embeddings optimized using Triplet Margin Loss and the AdamW optimizer. The system performs similarity search using cosine similarity and returns the top-5 nearest matching products for a given query image, enabling efficient and accurate visual product discovery.<br>
-               <b>Tech:</b> Python, Siamese Network, Triplet Margin Loss, AdamW, Cosine Similarity, clothing-dataset-small
+               <p>Developed a deep learning–based visual search system that retrieves visually similar fashion items. Trained a MobileNetV2 classifier on the clothing-dataset-small (7 apparel classes) using Cross-Entropy Loss, then leveraged the trained backbone in a Siamese Network for metric learning with TripletMarginLoss. Images were resized to 64×64, producing 276-dimensional embeddings optimized with AdamW. The system performs cosine similarity search to return the top-5 nearest items, enabling accurate and efficient visual product discovery. The approach fully utilizes class labels for initial supervised training before embedding-based similarity learning.<br>
+               <b>Tech:</b> Python, MobileNetV2, Siamese Network, CrossEntropyLoss, TripletMargin Loss, AdamW, Cosine Similarity, DataSet : clothing-dataset-small
                </p>
             </div>
          </div>
