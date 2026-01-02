@@ -527,7 +527,7 @@
                   </tbody>
                </table>
                </p>
-               <h3> FakeFinder – AI-Generated Image Detection System (Fine-Tune MobileNetV3-Large,)</h3>
+               <h3> FakeFinder – AI-Generated Image Detection System (Fine-Tune MobileNetV3-Large)</h3>
                <p>
                   Developed a deep learning–based image classification system to distinguish AI-generated images from real images using a subset of the AI-Generated Images vs Real Images dataset. Implemented an end-to-end training and evaluation pipeline using PyTorch, including dataset loading, image preprocessing, data augmentation, and efficient batching through DataLoaders.
                   Fine-tuned a pre-trained MobileNetV3-Large model by freezing its feature extraction layers and replacing the final classifier head to adapt the network for binary classification. Applied transfer learning techniques to significantly improve model performance with minimal training.
@@ -539,9 +539,13 @@
                   Built an image classification model to distinguish Normal, Bacterial Pneumonia, and Viral Pneumonia using the Chest X-Ray dataset. Implemented a clean training pipeline with PyTorch Lightning, including a LightningDataModule for preprocessing and a LightningModule encapsulating ResNet18 (fine-tuned on the classifier head and last two conv layers), loss, Accuracy metrics, and Adam optimizer. Configured a Lightning Trainer with EarlyStopping (callback), ModelCheckpoint, and LR scheduling (ReduceLROnPlateau) to automate training. Achieved ~90% test accuracy with limited epochs.<br>
                   <b>Tech:</b> PyTorch Lightning, ResNet18 (partial fine-tuning), AdamW, ReduceLROnPlateau, EarlyStopping
                </p>
-               <h3> Face Recognition-Based Authentication System </h3>
+               <h3> ArcFace-Weaviate : Face Recognition-Based Authentication System </h3>
                <p> Developed an application enabling registration of new users using facial images and subsequent identification/authentication based on stored faces. Implemented embedding generation using ArcFace, producing 512-dimensional vectors for each registered face. Used Weaviate DB with HNSW (Hierarchical Navigable Small World) graphs to efficiently index and search embeddings using cosine similarity. Authentication logic: if cosine similarity > 60%, the input face is considered a match. Built a user-friendly Gradio interface for image input, registration, and real-time identification. Applied transfer learning for feature extraction, ensuring high accuracy with minimal data. Optimized workflow for fast search and retrieval of embeddings, supporting scalable face-based authentication.<br>
-               <b>Tech:</b>Python, ArcFace, Gradio, Weaviate, Transfer Learning
+               <b>Tech:</b> Python, ArcFace, Gradio, Weaviate, Transfer Learning
+               </p>
+               <h3> AI Powered Visual Search Engine for Fashion Store </h3>
+               <p>Developed an AI-based visual search system that retrieves visually similar fashion items from a catalog using deep metric learning. Trained a Siamese Network from scratch on the clothing-dataset-small, covering seven apparel classes: dress, hat, longsleeve, pants, shoes, shorts, and t-shirt. Images were resized to 64×64, and the network learned 276-dimensional embeddings optimized using Triplet Margin Loss and the AdamW optimizer. The system performs similarity search using cosine similarity and returns the top-5 nearest matching products for a given query image, enabling efficient and accurate visual product discovery.<br>
+               <b>Tech:</b> Python, Siamese Network, Triplet Margin Loss, AdamW, Cosine Similarity, clothing-dataset-small
                </p>
             </div>
          </div>
