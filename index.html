@@ -267,6 +267,7 @@
             <div class="tab" onclick="openTab('achievements')">Achievements</div>
             <div class="tab" onclick="openTab('profile')">Profile</div>
             <div class="tab" onclick="openTab('contact')">Contact</div>
+            <div class="tab" onclick="openTab('evolution')">Contact</div>
          </div>
          <!-- About -->
          <div id="about" class="tab-content active">
@@ -726,6 +727,27 @@
             </div>
          </div>
       </div>
+      
+      <div id="evolution" class="tab-content">
+         <div class="card">
+            <h2>Evolution of NLP</h2>
+            <p><b>Frequency based Vectors:</b> TF-IDF, BM25 etc, for each sentence one Frequency vector, we donot call it embedding vector as no semantic meaning.
+Size of Vector is V : Vocabulary Size and Sparse, we cannot compress to small dimension D becoz it donot contain any semantic information.<br>
+	    Remove Stopword/lemmitization because they are noise as embedding depend upon frequency of token<br>
+	    <b>Static Embeddings (Semantic but not contextual):</b> Word2Vec, Glove etc, for each token one embedding vector. <b>(Single One Co-occurance Matrix for entire training corpus)</b>
+As each token represents static embedding, donot have context from other tokens of sentence, so to get Sentence Static Embedding we apply Pooling (Mean/Max/Sum) etc over all computed token embeddings of sentence.<br>
+	    <b>Drawback:</b> Its same for every token irrespective of words-context how and where it is used.<br>
+	    Size of Co-occurance Matrix is V*V : Size of Vocabulary, these sparse vectors are convert for each token from V size to D, Dense Vectors which are used as inputs to MLP.<br>
+	    <b>Contextual Embeddings (Semantic and Contextual): RNN/LSTM</b>, for each token one embedding vector. Not use positional encoding because its sequential so now the positions of tokens. (hidden layer provide contextual embedding)<br>
+	    <b>Drawback:</br> Not scalable, sequential, slow to train<br>
+	    <b>Contextual Embedding using Attention (Semantic and Contextual):</b>4.Transformers (Scalable, Parallel not Sequential). We stop generating next token when we reached <eos> or max_token_limit.<br>
+	    <b>Static Embedding Matrix (E) : E(token_id):</b> Lookup is fast as indexing is fast for integers over string. Token IDs exist only for speed, batching, and GPU efficiency<br>
+	    <b>KV Cache:</b> We cache K,V values for all the previous tokens, then just compute K,V values for new token at a time and reuse cached K,V values for previous token then we apply attention formula. (Speed Up)<br>
+            </p>
+         </div>
+      </div>
+      
+      
       <!-- Floating Chatbot Code (place here) -->
       <div class="chatbot-widget">
          <div class="chatbot-header" onclick="toggleChatbot()">
