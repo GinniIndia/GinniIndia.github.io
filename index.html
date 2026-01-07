@@ -547,6 +547,11 @@
                <p>Developed a deep learning–based visual search system that retrieves visually similar fashion items. Trained a MobileNetV2 classifier on the clothing-dataset-small (7 apparel classes) using Cross-Entropy Loss, then leveraged the trained backbone in a Siamese Network for metric learning with TripletMarginLoss. Images were resized to 64×64, producing 276-dimensional embeddings optimized with AdamW. The system performs cosine similarity search to return the top-5 nearest items, enabling accurate and efficient visual product discovery. The approach fully utilizes class labels for initial supervised training before embedding-based similarity learning.<br>
                <b>Tech:</b> Python, MobileNetV2, Siamese Network, CrossEntropyLoss, TripletMargin Loss, AdamW, Cosine Similarity, DataSet : clothing-dataset-small
                </p>
+               <h3>CleanVision AI – Edge Model Optimization </h3>
+               <p>
+               Optimized a ResNet-18 image classification model for CPU-only edge devices used in smart city street-cleaning vehicles. Applied pruning, INT8 dynamic quantization, and quantization-aware training (QAT) to meet strict latency and storage constraints. Reduced model size from ~512 MB to <150 MB and CPU inference latency from ~900 ms to <50 ms per image. Maintained >95% classification accuracy across clean, litter, and recycle categories. Enabled real-time, GPU-free deployment on low-resource embedded hardware.
+               <b>Tech:</b> PyTorch, ResNet, Model Pruning, INT8 Quantization, QAT, Edge AI
+               </p>
             </div>
          </div>
          <!-- Courses -->
