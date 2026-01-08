@@ -731,18 +731,57 @@
       <div id="evolution" class="tab-content">
          <div class="card">
             <h2>Evolution of NLP</h2>
-            <p><b>Frequency based Vectors:</b> TF-IDF, BM25 etc, for each sentence one Frequency vector, we donot call it embedding vector as no semantic meaning.
+            <p><b>1. Frequency based Vectors:</b> TF-IDF, BM25 etc, for each sentence one Frequency vector, we donot call it embedding vector as no semantic meaning.
 Size of Vector is V : Vocabulary Size and Sparse, we cannot compress to small dimension D becoz it donot contain any semantic information.<br>
 	    Remove Stopword/lemmitization because they are noise as embedding depend upon frequency of token<br><br>
-	    <b>Static Embeddings (Semantic but not contextual):</b> Word2Vec, Glove etc, for each token one embedding vector. <b>(Single One Co-occurance Matrix for entire training corpus)</b>
+	    <b>2. Static Embeddings (Semantic but not contextual):</b> Word2Vec, Glove etc, for each token one embedding vector. <b>(Single One Co-occurance Matrix for entire training corpus)</b>
 As each token represents static embedding, donot have context from other tokens of sentence, so to get Sentence Static Embedding we apply Pooling (Mean/Max/Sum) etc over all computed token embeddings of sentence.<br>
 	    <b>Drawback:</b> Its same for every token irrespective of words-context how and where it is used.<br>
 	    Size of Co-occurance Matrix is V*V : Size of Vocabulary, these sparse vectors are convert for each token from V size to D, Dense Vectors which are used as inputs to MLP.<br><br>
-	    <b>Contextual Embeddings (Semantic and Contextual): RNN/LSTM</b>, for each token one embedding vector. Not use positional encoding because its sequential so now the positions of tokens. (hidden layer provide contextual embedding)<br>
-	    <b>Drawback:</br> Not scalable, sequential, slow to train<br><br>
-	    <b>Contextual Embedding using Attention (Semantic and Contextual):</b>4.Transformers (Scalable, Parallel not Sequential). We stop generating next token when we reached <eos> or max_token_limit.<br>
+	    <b>3. Contextual Embeddings (Semantic and Contextual): RNN/LSTM</b>, for each token one embedding vector. Not use positional encoding because its sequential so now the positions of tokens. (hidden layer provide contextual embedding)<br>
+	    <b>Drawback:</b> Not scalable, sequential, slow to train<br><br>
+	    <b>4. Contextual Embedding using Attention (Semantic and Contextual):</b>4.Transformers (Scalable, Parallel not Sequential). We stop generating next token when we reached <eos> or max_token_limit.<br>
 	    <b>Static Embedding Matrix (E) : E(token_id):</b> Lookup is fast as indexing is fast for integers over string. Token IDs exist only for speed, batching, and GPU efficiency<br>
-	    <b>KV Cache:</b> We cache K,V values for all the previous tokens, then just compute K,V values for new token at a time and reuse cached K,V values for previous token then we apply attention formula. (Speed Up)<br><br>
+	    <b>KV Cache:</b> We cache K,V values for all the previous tokens, then just compute K,V values for new token at a time and reuse cached K,V values for previous token then we apply attention formula. (Speed Up)<br>
+	    Dimension of Static Embedding : V * d_model<br>
+	    Dimension of Positional Embedding : Context_Window * d_model<br>
+	    Static Embedding + Positional Embedding + Segment Embedding == new embedding vector + Attention  == Contextual Embedding<br><br>
+	    
+	    <b>Encoder Only (Bidirectional)</b><br>
+	    1. Sees left and right context.<br>
+	    2. BERT does not do next-token prediction.<br>
+	    3. Predict token : use that token’s embedding.<br>
+	    4. Predict sentence : use [CLS] embedding.<br>
+	    5. Middle token see more context then last token.<br><br>
+	    
+	    <b>Decorder Only (Unidirectional : left to right) / autoregressive</b><br>
+	    1. The last token embedding has seen all previous tokens, last token itself summary token.<br>
+	    2. Attention mask is left-to-right.<br>
+	    3. No [cls] and [sep] tokens at start and end.<br>
+	    a) "I love machine learning"<br>
+	    b) ['I', 'Ġlove', 'Ġmachine', 'Ġlearning']<br>
+	    c) G’ means space before the word<br>
+	    d) [40, 1842, 4570, 4673]<br><br>
+	    
+	    <b>Contextual Embedding</b> single token is sufficent to sentence summary classification.<br>
+	    <b>Static Embedding</b> Pool of all token embeddings is required to get sentence summary classification.<br><br>
+	    
+	    <b>5. In both Pruning and Quantization we donot change Bias. Pruning focus on weights only, while Quantization focus on weights + Activations both.</b><br><br>
+	    
+	    Pruning can be done both during inference or at fine-tune/training as well.</b><br>
+	    <b>Unstructured Pruning:</b> Removes individual weights to zero, makes matrix sparse, matrix shape remain same, so computation remains same, donot give real speedup, reserach purpose used, 						accuracy is more, at each layer applied.<br>
+	    <b>Structured Pruning:</b> Removes whole neurons / filters / channels, actual speed up, size shrink for effective pruned model, accuracy is less, at each layer applied.<br>
+	    <b>Global Pruning (Prefered One):</b> Unstructured Pruning, applied across multiple layers of model.<br><br>
+	    
+	    <b>Quantization:</b> Quantization Scaling Factors<br>
+	    <b>Static Quantization  (Post Training Method):</b> weights (pre-compute) + activations (pre-compute) use Caliber over test_loader, Need of QuantStub and deQuantStub, Ex Computer Vision<br>
+	    <b>Dynamic Quantization (Post Training Method):</b> weights(pre-compute) + activations (dynamic-compute), Ex NLP, LLM<br>
+	    <b>QAT:</b> Quantization Aware Training, form of Static Quantization fuse_model (Conv+BN+ReLU, Conv+BN, Conv+ReLU, Linear+ReLU), Need of QuantStub and deQuantStub<br><br>
+	    
+	    <b>6. Three types of model:</b> Regression, Classification, Embedding.<br>
+	    <b>Regression:</b> Mean Squared Error Loss Function<br>
+	    <b>Classification:</b> CrossEntropyLoss<br>
+	    <b>Embedding (Margin Based):</b> TripletMarginLoss, Contrastive Loss, (Softmax with Additive Angular Margin + CrossEntropy : ArcFace)<br><br>
             </p>
          </div>
       </div>
