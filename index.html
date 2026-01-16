@@ -587,6 +587,8 @@
                   <li class="course-row">PyTorch: Techniques and Ecosystem Tools <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/MLKFYRH19FTD" target="_blank">Certificate</a></span></li>
                   <li class="course-row">PyTorch: Advanced Architectures and Deployment <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/XVJH2T70TY6U" target="_blank">Certificate</a></span></li>
                   <li class="course-row">PyTorch for Deep Learning Specialization <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/specialization/Z3DF6RU88BJO" target="_blank">Certificate</a></span></li>
+                  
+                  <li class="course-row">AI for Medical Diagnosis <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/DH56JHBQNH1A" target="_blank">Certificate</a></span></li>
                </ul>
             </div>
             <div class="card">
@@ -781,7 +783,12 @@ As each token represents static embedding, donot have context from other tokens 
 	    <b>6. Three types of model:</b> Regression, Classification, Embedding.<br>
 	    <b>Regression:</b> Mean Squared Error Loss Function<br>
 	    <b>Classification:</b> CrossEntropyLoss<br>
-	    <b>Embedding (Margin Based):</b> TripletMarginLoss, Contrastive Loss, (Softmax with Additive Angular Margin + CrossEntropy : ArcFace)<br><br>
+	    <b>Embedding (Margin Based):</b> TripletMarginLoss, Contrastive Loss, (Softmax with Additive Angular Margin + CrossEntropy : ArcFace)<br>
+	    <b>Segmentation:</b> Soft Dice Loss, U-Net, only Convolution Layers<br><br>
+	    
+	    7. We can use <b>ROC (Receiver Operating Characteristic)</b> to have graph between True Positive Rate, False Positive Rate, then we find closet point to (0,1), so we get threshold beyond which 1 else 0 for output class.<br>
+	    <b>(threshold, (False Positive Rate, True Positive Rate))</b>, this is how we can choose threshold AUC is area under curve of ROC.<br><br>
+	    
             </p>
          </div>
       </div>
