@@ -780,14 +780,14 @@ As each token represents static embedding, donot have context from other tokens 
 	    <b>Dynamic Quantization (Post Training Method):</b> weights(pre-compute) + activations (dynamic-compute), Ex NLP, LLM<br>
 	    <b>QAT:</b> Quantization Aware Training, form of Static Quantization fuse_model (Conv+BN+ReLU, Conv+BN, Conv+ReLU, Linear+ReLU), Need of QuantStub and deQuantStub<br><br>
 	    
-	    <b>6. Three types of model:</b> Regression, Classification, Embedding.<br>
+	    <b>6. Four types of model:</b> Regression, Classification, Embedding, Segmentation.<br>
 	    <b>Regression:</b> Mean Squared Error Loss Function<br>
 	    <b>Classification:</b> CrossEntropyLoss<br>
 	    <b>Embedding (Margin Based):</b> TripletMarginLoss, Contrastive Loss, (Softmax with Additive Angular Margin + CrossEntropy : ArcFace)<br>
 	    <b>Segmentation:</b> Soft Dice Loss, U-Net, only Convolution Layers<br><br>
 	    
 	    7. We can use <b>ROC (Receiver Operating Characteristic)</b> to have graph between True Positive Rate, False Positive Rate, then we find closet point to (0,1), so we get threshold beyond which 1 else 0 for output class.<br>
-	    <b>(threshold, (False Positive Rate, True Positive Rate))</b>, this is how we can choose threshold AUC is area under curve of ROC.<br><br>
+	    <b>(threshold, (False Positive Rate, True Positive Rate))</b>, this is how we can choose threshold, AUC is area under curve of ROC.<br><br>
 	    
             </p>
          </div>
