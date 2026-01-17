@@ -222,6 +222,42 @@
          .chatbot-toggle:hover {
          transform: scale(1.1);
          }
+         
+         /* Responsive iframe container */
+	.iframe-wrapper {
+	  position: relative;
+	  width: 100%;
+	  max-width: 100%;
+	  height: 80vh;           /* takes 80% of viewport height */
+	  min-height: 500px;     /* safe minimum for desktop */
+	  border-radius: 16px;
+	  overflow: hidden;
+	  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+	 }
+
+	/* iframe fills container */
+	.iframe-wrapper iframe {
+	  width: 100%;
+	  height: 100%;
+	  border: none;
+	 }
+	 
+	 
+	 @media (max-width: 768px) {
+	  .iframe-wrapper {
+	    height: 70vh;
+	    min-height: 420px;
+	  }
+	 }
+
+	@media (max-width: 480px) {
+	  .iframe-wrapper {
+	    height: 65vh;
+	    min-height: 380px;
+	  }
+	}
+
+         
          /* Responsive */
          @media (max-width: 768px) {
          .header h1 { font-size: 2rem; }
@@ -795,15 +831,15 @@ As each token represents static embedding, donot have context from other tokens 
       </div>
       
       <div id="face-ai-demo" class="tab-content">
-      <iframe
-	src="https://ginnigarg-facial-recognisation-portfolio.hf.space"
-	frameborder="0"
-	width="1200"
-	height="800"
-	allow="camera; microphone">
-	></iframe>
+	  <div class="iframe-wrapper">
+	    <iframe
+	      src="https://ginnigarg-facial-recognisation-portfolio.hf.space"
+	      allow="camera; microphone"
+	      loading="lazy">
+	    </iframe>
+	  </div>
       </div>
-      
+
       </div>
       
       <!-- Floating Chatbot Code (place here) -->
