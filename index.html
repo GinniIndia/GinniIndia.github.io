@@ -599,9 +599,24 @@
 	       <li>Built a Random Survival Forest to capture non-linear effects and complex feature interactions beyond proportional hazards assumptions.</li>
 	       <li>Evaluated model performance using the Concordance Index (C-index), achieving 0.85 on Cox model test data and 0.86 on Random Survival Forest validation data, indicating strong risk-ranking accuracy.</li>
 	       <li>Compared linear and ensemble survival models to balance interpretability and predictive performance.</li>
-	       <b>Tech:</b> Primary Biliary Cirrhosis (PBC) Dataset, Cox Proportional Hazards, Random Survival Forest, Negative Partial Log-Likelihood, Newton–Raphson Optimization, Concordance Index (C-index)
 	       </ul>
+	       <b>Tech:</b> Primary Biliary Cirrhosis (PBC) Dataset, Cox Proportional Hazards, Random Survival Forest, Negative Partial Log-Likelihood, Newton–Raphson Optimization, Concordance Index (C-index)
                </p>
+               
+               <h3>Treatment Effect Analysis of Levamisole–Fluorouracil in Post-Surgical Colon Cancer Patients</h3>
+               <p>
+               <ul>
+               <li>Analyzed randomized controlled trial (RCT) data to estimate the individualized treatment effect of Levamisole–Fluorouracil compared to standard chemotherapy in post-operative colon cancer patients.</li>
+               <li>Modeled predictive risk reduction to identify patients who benefit from treatment, defining treatment utility when estimated benefit > 0.</li>
+               <li>Implemented Logistic Regression and T-Learner (Random Forest–based) approaches to estimate conditional treatment effects.</li>
+               <li>Performed hyperparameter tuning for Random Forest models using Grid Search to optimize treatment effect estimation.</li>
+               <li>Evaluated model performance using c-for-benefit, a metric designed for treatment effect discrimination across patient subgroups.</li>
+               <li>Achieved c-for-benefit scores of 0.5412 (Logistic Regression) and 0.5250 (T-Learner), indicating modest but consistent ability to rank patients by treatment benefit.</li>
+               <li>Interpreted results to validate the clinical benefit of Levamisole–Fluorouracil in reducing residual cancer risk following surgery.</li>
+               </ul>
+               <b>Tech:</b> RCT Data, Random Forest, T_learner, Grid Search, Logistic Regression, Risk Reduction, C-for-benefit
+               </p>
+               
             </div>
          </div>
          <!-- Courses -->
@@ -637,8 +652,12 @@
                   <li class="course-row">PyTorch: Advanced Architectures and Deployment <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/XVJH2T70TY6U" target="_blank">Certificate</a></span></li>
                   <li class="course-row">PyTorch for Deep Learning Specialization <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/specialization/Z3DF6RU88BJO" target="_blank">Certificate</a></span></li>
                   
+                   <li class="course-row">AI for Medicine Specialization <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/specialization/CNK8X5VKZQWI" target="_blank">Certificate</a></span></li>
+                  
                   <li class="course-row">AI for Medical Diagnosis <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/DH56JHBQNH1A" target="_blank">Certificate</a></span></li>	  
                   <li class="course-row">AI for Medical Prognosis  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/5P71SF8IZS34" target="_blank">Certificate</a></span></li>
+                   
+                  <li class="course-row">AI For Medical Treatment  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/HCROTL4AEYK4" target="_blank">Certificate</a></span></li>
                </ul>
             </div>
             <div class="card">
@@ -682,6 +701,7 @@
                   <li>Encoder, Decoder, Encoder-Decorder NLP, Stable Diffusion, MLFlow, ONNX, Unstructered/Structured/Global Pruning, Static/Dynamic/QAT Quantization</li>
                   <li>Cox Proportional Hazards Model, Random Survival Forest, Negative Partial Log-Likelihood, Newton–Raphson Optimization, Concordance Index (C-index)</li>
                   <li>Mean Imputation, Regression Imputation, Soft Dice Loss, U-net for Image Segmentation</li>
+                  <li>T-learner, c-for-benefit, GradCam, Saliency Maps, bioc, Negbio, Permutation Importance and Shapely Values</li>
                </ul>
             </div>
             <div class="card">
