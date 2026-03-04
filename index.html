@@ -222,42 +222,35 @@
          .chatbot-toggle:hover {
          transform: scale(1.1);
          }
-         
          /* Responsive iframe container */
-	.iframe-wrapper {
-	  position: relative;
-	  width: 100%;
-	  max-width: 100%;
-	  height: 80vh;           /* takes 80% of viewport height */
-	  min-height: 500px;     /* safe minimum for desktop */
-	  border-radius: 16px;
-	  overflow: hidden;
-	  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-	 }
-
-	/* iframe fills container */
-	.iframe-wrapper iframe {
-	  width: 100%;
-	  height: 100%;
-	  border: none;
-	 }
-	 
-	 
-	 @media (max-width: 768px) {
-	  .iframe-wrapper {
-	    height: 70vh;
-	    min-height: 420px;
-	  }
-	 }
-
-	@media (max-width: 480px) {
-	  .iframe-wrapper {
-	    height: 65vh;
-	    min-height: 380px;
-	  }
-	}
-
-         
+         .iframe-wrapper {
+         position: relative;
+         width: 100%;
+         max-width: 100%;
+         height: 80vh;           /* takes 80% of viewport height */
+         min-height: 500px;     /* safe minimum for desktop */
+         border-radius: 16px;
+         overflow: hidden;
+         box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+         }
+         /* iframe fills container */
+         .iframe-wrapper iframe {
+         width: 100%;
+         height: 100%;
+         border: none;
+         }
+         @media (max-width: 768px) {
+         .iframe-wrapper {
+         height: 70vh;
+         min-height: 420px;
+         }
+         }
+         @media (max-width: 480px) {
+         .iframe-wrapper {
+         height: 65vh;
+         min-height: 380px;
+         }
+         }
          /* Responsive */
          @media (max-width: 768px) {
          .header h1 { font-size: 2rem; }
@@ -399,6 +392,11 @@
          <div id="projects" class="tab-content">
             <div class="card">
                <h2>Highlighted Projects</h2>
+               <h3>Name Similarity & Intelligent Name Matching using Fine-Tuned MPNet (mpnet-base-v2)</h3>
+               <p>Fine-tuned the MPNet Base v2 transformer model for a high-accuracy Name Similarity task to solve real-world name matching challenges such as token shuffling, spacing inconsistencies, honorific prefixes, and partial name variations. Expanded the dataset from 60K to 80K+ records through targeted augmentation applied to matched-name pairs (label = 1), including space removal (e.g., “RAHUL SHARMA” → “RAHULSHARMA”), token shuffling ("RAHUL KUMAR SHARMA" → "SHARMA RAHUL KUMAR"), middle-name dropping ("RAHUL KUMAR SHARMA" → "RAHUL SHARMA"), and random concatenation strategies ("RAHUL KUMAR SHARMA" → "RAHULKUMAR SHARMA") to improve model robustness. Implemented intelligent preprocessing by normalizing case, trimming whitespace, and removing prefixes such as mr, mrs, late, sh, lt, ensuring consistency across training and inference pipelines. Designed a dual-embedding strategy where two vectors were generated per name—(1) preprocessed original name and (2) preprocessed concatenated name—to handle structural name variations. Experimented with multiple similarity aggregation strategies and finalized a hybrid scoring formula:
+                  Similarity Score = max(V1, V2, mean(V1, V2)), which outperformed individual and mean-based approaches. Optimized contrastive loss by auto-computing the margin (0.62) from training/validation distributions instead of using a fixed heuristic margin (0.5), improving class separation. Achieved outstanding performance with AUC: 0.9991, Accuracy: 99%, and optimal threshold 0.8383, demonstrating production-grade reliability for large-scale identity matching systems such as TSP-based embedding pipelines.<br>
+                  <b>Tech:</b> mpnet-base-v2, Fine-Tune, Augmentation, Preprocessing, AUC-ROC, Recall/Precision, Hyper-parameter Tuning (Margin) for Contrastive Loss		
+               </p>
                <h3>Semantic Search Engine and Question-Answering over Github DataSets/issues</h3>
                <p>Developed a Semantic Search Engine to get best n=5 matching issues for user search from Github huggingface DataSets repo using FAISS index, further In-context learning is used to have question answering system over n matching issues for particular user search using T-5 model. App is deployed over Hugging Face Spaces. Further preprocessed data of github hugging_face dataset repo is pushed to huggingface hub.<br>
                   <b>Tech:</b> Gradio, DataSets, Cosine Similarity, Cls_Pool (model: sentence-transformers/multi-qa-mpnet-base-dot-v1), Hugging Face Hub, T-5 for QA,  FAISS.
@@ -580,44 +578,41 @@
                </p>
                <h3> ArcFace-Weaviate : Face Recognition-Based Authentication System </h3>
                <p> Developed an application enabling registration of new users using facial images and subsequent identification/authentication based on stored faces. Implemented embedding generation using ArcFace, producing 512-dimensional vectors for each registered face. Used Weaviate DB with HNSW (Hierarchical Navigable Small World) graphs to efficiently index and search embeddings using cosine similarity. Authentication logic: if cosine similarity > 60%, the input face is considered a match. Built a user-friendly Gradio interface for image input, registration, and real-time identification. Applied transfer learning for feature extraction, ensuring high accuracy with minimal data. Optimized workflow for fast search and retrieval of embeddings, supporting scalable face-based authentication.<br>
-               <b>Tech:</b> Python, ArcFace, Gradio, Weaviate, Transfer Learning
+                  <b>Tech:</b> Python, ArcFace, Gradio, Weaviate, Transfer Learning
                </p>
                <h3> AI Powered Visual Search Engine for Fashion Store </h3>
                <p>Developed a deep learning–based visual search system that retrieves visually similar fashion items. Trained a MobileNetV2 classifier on the clothing-dataset-small (7 apparel classes) using Cross-Entropy Loss, then leveraged the trained backbone in a Siamese Network for metric learning with TripletMarginLoss. Images were resized to 64×64, producing 276-dimensional embeddings optimized with AdamW. The system performs cosine similarity search to return the top-5 nearest items, enabling accurate and efficient visual product discovery. The approach fully utilizes class labels for initial supervised training before embedding-based similarity learning.<br>
-               <b>Tech:</b> Python, MobileNetV2, Siamese Network, CrossEntropyLoss, TripletMargin Loss, AdamW, Cosine Similarity, DataSet : clothing-dataset-small
+                  <b>Tech:</b> Python, MobileNetV2, Siamese Network, CrossEntropyLoss, TripletMargin Loss, AdamW, Cosine Similarity, DataSet : clothing-dataset-small
                </p>
                <h3>CleanVision AI – Edge Model Optimization </h3>
                <p>
-               Optimized a ResNet-18 image classification model for CPU-only edge devices used in smart city street-cleaning vehicles. Applied pruning, INT8 dynamic quantization, and quantization-aware training (QAT) to meet strict latency and storage constraints. Reduced model size from ~512 MB to <150 MB and CPU inference latency from ~900 ms to <50 ms per image. Maintained >95% classification accuracy across clean, litter, and recycle categories. Enabled real-time, GPU-free deployment on low-resource embedded hardware.
-               <b>Tech:</b> PyTorch, ResNet, Model Pruning, INT8 Quantization, QAT, Edge AI
+                  Optimized a ResNet-18 image classification model for CPU-only edge devices used in smart city street-cleaning vehicles. Applied pruning, INT8 dynamic quantization, and quantization-aware training (QAT) to meet strict latency and storage constraints. Reduced model size from ~512 MB to <150 MB and CPU inference latency from ~900 ms to <50 ms per image. Maintained >95% classification accuracy across clean, litter, and recycle categories. Enabled real-time, GPU-free deployment on low-resource embedded hardware.
+                  <b>Tech:</b> PyTorch, ResNet, Model Pruning, INT8 Quantization, QAT, Edge AI
                </p>
-               
                <h3>Prediction of Survival Time and Hazard Risk in Primary Biliary Cirrhosis (PBC)</h3>
                <p>
                <ul>
-               <li>Developed survival analysis models to predict patient survival time and hazard risk scores for Primary Biliary Cirrhosis (PBC) using censored clinical data.</li>
-	       <li>Implemented a Cox Proportional Hazards model, optimizing the negative partial log-likelihood (events-only likelihood) using Newton–Raphson second-order optimization.</li>
-	       <li>Built a Random Survival Forest to capture non-linear effects and complex feature interactions beyond proportional hazards assumptions.</li>
-	       <li>Evaluated model performance using the Concordance Index (C-index), achieving 0.85 on Cox model test data and 0.86 on Random Survival Forest validation data, indicating strong risk-ranking accuracy.</li>
-	       <li>Compared linear and ensemble survival models to balance interpretability and predictive performance.</li>
-	       </ul>
-	       <b>Tech:</b> Primary Biliary Cirrhosis (PBC) Dataset, Cox Proportional Hazards, Random Survival Forest, Negative Partial Log-Likelihood, Newton–Raphson Optimization, Concordance Index (C-index)
+                  <li>Developed survival analysis models to predict patient survival time and hazard risk scores for Primary Biliary Cirrhosis (PBC) using censored clinical data.</li>
+                  <li>Implemented a Cox Proportional Hazards model, optimizing the negative partial log-likelihood (events-only likelihood) using Newton–Raphson second-order optimization.</li>
+                  <li>Built a Random Survival Forest to capture non-linear effects and complex feature interactions beyond proportional hazards assumptions.</li>
+                  <li>Evaluated model performance using the Concordance Index (C-index), achieving 0.85 on Cox model test data and 0.86 on Random Survival Forest validation data, indicating strong risk-ranking accuracy.</li>
+                  <li>Compared linear and ensemble survival models to balance interpretability and predictive performance.</li>
+               </ul>
+               <b>Tech:</b> Primary Biliary Cirrhosis (PBC) Dataset, Cox Proportional Hazards, Random Survival Forest, Negative Partial Log-Likelihood, Newton–Raphson Optimization, Concordance Index (C-index)
                </p>
-               
                <h3>Treatment Effect Analysis of Levamisole–Fluorouracil in Post-Surgical Colon Cancer Patients</h3>
                <p>
                <ul>
-               <li>Analyzed randomized controlled trial (RCT) data to estimate the individualized treatment effect of Levamisole–Fluorouracil compared to standard chemotherapy in post-operative colon cancer patients.</li>
-               <li>Modeled predictive risk reduction to identify patients who benefit from treatment, defining treatment utility when estimated benefit > 0.</li>
-               <li>Implemented Logistic Regression and T-Learner (Random Forest–based) approaches to estimate conditional treatment effects.</li>
-               <li>Performed hyperparameter tuning for Random Forest models using Grid Search to optimize treatment effect estimation.</li>
-               <li>Evaluated model performance using c-for-benefit, a metric designed for treatment effect discrimination across patient subgroups.</li>
-               <li>Achieved c-for-benefit scores of 0.5412 (Logistic Regression) and 0.5250 (T-Learner), indicating modest but consistent ability to rank patients by treatment benefit.</li>
-               <li>Interpreted results to validate the clinical benefit of Levamisole–Fluorouracil in reducing residual cancer risk following surgery.</li>
+                  <li>Analyzed randomized controlled trial (RCT) data to estimate the individualized treatment effect of Levamisole–Fluorouracil compared to standard chemotherapy in post-operative colon cancer patients.</li>
+                  <li>Modeled predictive risk reduction to identify patients who benefit from treatment, defining treatment utility when estimated benefit > 0.</li>
+                  <li>Implemented Logistic Regression and T-Learner (Random Forest–based) approaches to estimate conditional treatment effects.</li>
+                  <li>Performed hyperparameter tuning for Random Forest models using Grid Search to optimize treatment effect estimation.</li>
+                  <li>Evaluated model performance using c-for-benefit, a metric designed for treatment effect discrimination across patient subgroups.</li>
+                  <li>Achieved c-for-benefit scores of 0.5412 (Logistic Regression) and 0.5250 (T-Learner), indicating modest but consistent ability to rank patients by treatment benefit.</li>
+                  <li>Interpreted results to validate the clinical benefit of Levamisole–Fluorouracil in reducing residual cancer risk following surgery.</li>
                </ul>
                <b>Tech:</b> RCT Data, Random Forest, T_learner, Grid Search, Logistic Regression, Risk Reduction, C-for-benefit
                </p>
-               
             </div>
          </div>
          <!-- Courses -->
@@ -652,16 +647,11 @@
                   <li class="course-row">PyTorch: Techniques and Ecosystem Tools <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/MLKFYRH19FTD" target="_blank">Certificate</a></span></li>
                   <li class="course-row">PyTorch: Advanced Architectures and Deployment <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/XVJH2T70TY6U" target="_blank">Certificate</a></span></li>
                   <li class="course-row">PyTorch for Deep Learning Specialization <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/specialization/Z3DF6RU88BJO" target="_blank">Certificate</a></span></li>
-                  
-                   <li class="course-row">AI for Medicine Specialization <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/specialization/CNK8X5VKZQWI" target="_blank">Certificate</a></span></li>
-                  
-                  <li class="course-row">AI for Medical Diagnosis <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/DH56JHBQNH1A" target="_blank">Certificate</a></span></li>	  
+                  <li class="course-row">AI for Medicine Specialization <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/specialization/CNK8X5VKZQWI" target="_blank">Certificate</a></span></li>
+                  <li class="course-row">AI for Medical Diagnosis <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/DH56JHBQNH1A" target="_blank">Certificate</a></span></li>
                   <li class="course-row">AI for Medical Prognosis  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/5P71SF8IZS34" target="_blank">Certificate</a></span></li>
-                   
                   <li class="course-row">AI For Medical Treatment  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/HCROTL4AEYK4" target="_blank">Certificate</a></span></li>
-                  
                   <li class="course-row">Attention in Transformers: Concepts and Code in PyTorch  <span class="align-right"> <a href="https://ginniindia.github.io" target="_blank">Certificate</a></span></li>
-                  
                </ul>
             </div>
             <div class="card">
@@ -683,6 +673,8 @@
                <h2>Non Technical Courses</h2>
                <ul>
                   <li class="course-row">The Science of Well-Being  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/DL3EL0BUFOR1" target="_blank">Certificate</a></span></li>
+                  <li class="course-row">Improving Communication Skills  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/LP2DX8LPV0EN" target="_blank">Certificate</a></span></li>
+                  <li class="course-row">Developing Innovative Ideas for New Companies: The First Step in Entrepreneurship  <span class="align-right"> <a href="https://www.coursera.org/account/accomplishments/verify/1S1AEBMQJDK3" target="_blank">Certificate</a></span></li>
                </ul>
             </div>
          </div>
@@ -783,23 +775,21 @@
                   <li>Member of Institution Innovation Council under the ageis of MHRD’s Innovation Cell established at NIT, Kurukshetra for academic year 2018-2019.</li>
                </ul>
             </div>
-            
             <div class="card">
-            	<h2>Books (Recreational Activities)</h2>
-            	<ul>
-            		<li>"The Psychology of Money" by Morgan Housel</li>
-            		<li>"The Power of Now" by Eckhart Tolle</li>
-            		<li>"Ikigai: The Japanese Secret to a Long and Happy" by Héctor García and Francesc Miralles</li>
-            		<li>"The Power of Your Subconscious Mind" by Dr. Joseph Murphy</li>
-            		<li>"Atomic Habits" by James Clear</li>
-            		<li>"How To Stop Worrying And Start Living" by Dale Carnegie</li>
-            		<li>"How to Win Friends and Influence People" by Dale Carnegie</li>
-            		<li>"The 21 Irrefutable Laws of Leadership" by John C. Maxwell</li>
-            		<li>"Vivekanand Ki Atmakatha: An Autobiography of Vivekananda" by Shri Sankar</li>
-            		<li>"The 80/20 Principle: The Secret to Achieving More with Less" by Richard Koch</li>
-            	</ul>
+               <h2>Books (Recreational Activities)</h2>
+               <ul>
+                  <li>"The Psychology of Money" by Morgan Housel</li>
+                  <li>"The Power of Now" by Eckhart Tolle</li>
+                  <li>"Ikigai: The Japanese Secret to a Long and Happy" by Héctor García and Francesc Miralles</li>
+                  <li>"The Power of Your Subconscious Mind" by Dr. Joseph Murphy</li>
+                  <li>"Atomic Habits" by James Clear</li>
+                  <li>"How To Stop Worrying And Start Living" by Dale Carnegie</li>
+                  <li>"How to Win Friends and Influence People" by Dale Carnegie</li>
+                  <li>"The 21 Irrefutable Laws of Leadership" by John C. Maxwell</li>
+                  <li>"Vivekanand Ki Atmakatha: An Autobiography of Vivekananda" by Shri Sankar</li>
+                  <li>"The 80/20 Principle: The Secret to Achieving More with Less" by Richard Koch</li>
+               </ul>
             </div>
-            
          </div>
          <!-- Profile -->
          <div id="profile" class="tab-content">
@@ -821,94 +811,83 @@
                <p><b>Email:</b> <a href="mailto:gargginni01@gmail.com">gargginni01@gmail.com</a></p>
             </div>
          </div>
-     
-      
-      <div id="evolution" class="tab-content">
-         <div class="card">
-            <h2>Evolution of NLP</h2>
-            <p><b>1. Frequency based Vectors:</b> TF-IDF, BM25 etc, for each sentence one Frequency vector, we donot call it embedding vector as no semantic meaning.
-Size of Vector is V : Vocabulary Size and Sparse, we cannot compress to small dimension D becoz it donot contain any semantic information.<br>
-	    Remove Stopword/lemmitization because they are noise as embedding depend upon frequency of token<br><br>
-	    <b>2. Static Embeddings (Semantic but not contextual):</b> Word2Vec, Glove etc, for each token one embedding vector. <b>(Single One Co-occurance Matrix for entire training corpus)</b>
-As each token represents static embedding, donot have context from other tokens of sentence, so to get Sentence Static Embedding we apply Pooling (Mean/Max/Sum) etc over all computed token embeddings of sentence.<br>
-	    <b>Drawback:</b> Its same for every token irrespective of words-context how and where it is used.<br>
-	    Size of Co-occurance Matrix is V*V : Size of Vocabulary, these sparse vectors are convert for each token from V size to D, Dense Vectors which are used as inputs to MLP.<br><br>
-	    <b>3. Contextual Embeddings (Semantic and Contextual): RNN/LSTM</b>, for each token one embedding vector. Not use positional encoding because its sequential so now the positions of tokens. (hidden layer provide contextual embedding)<br>
-	    <b>Drawback:</b> Not scalable, sequential, slow to train<br><br>
-	    <b>4. Contextual Embedding using Attention (Semantic and Contextual):</b>4.Transformers (Scalable, Parallel not Sequential). We stop generating next token when we reached <eos> or max_token_limit.<br>
-	    <b>Static Embedding Matrix (E) : E(token_id):</b> Lookup is fast as indexing is fast for integers over string. Token IDs exist only for speed, batching, and GPU efficiency<br>
-	    <b>KV Cache:</b> We cache K,V values for all the previous tokens, then just compute K,V values for new token at a time and reuse cached K,V values for previous token then we apply attention formula. (Speed Up)<br>
-	    Dimension of Static Embedding : V * d_model<br>
-	    Dimension of Positional Embedding : Context_Window * d_model<br>
-	    Static Embedding + Positional Embedding + Segment Embedding == new embedding vector + Attention  == Contextual Embedding<br><br>
-	    
-	    <b>Encoder Only (Bidirectional)</b><br>
-	    1. Sees left and right context.<br>
-	    2. BERT does not do next-token prediction.<br>
-	    3. Predict token : use that token’s embedding.<br>
-	    4. Predict sentence : use [CLS] embedding.<br>
-	    5. Middle token see more context then last token.<br><br>
-	    
-	    <b>Decorder Only (Unidirectional : left to right) / autoregressive</b><br>
-	    1. The last token embedding has seen all previous tokens, last token itself summary token.<br>
-	    2. Attention mask is left-to-right.<br>
-	    3. No [cls] and [sep] tokens at start and end.<br>
-	    a) "I love machine learning"<br>
-	    b) ['I', 'Ġlove', 'Ġmachine', 'Ġlearning']<br>
-	    c) G’ means space before the word<br>
-	    d) [40, 1842, 4570, 4673]<br><br>
-	    
-	    <b>Contextual Embedding</b> single token is sufficent to sentence summary classification.<br>
-	    <b>Static Embedding</b> Pool of all token embeddings is required to get sentence summary classification.<br><br>
-	    
-	    <b>5. In both Pruning and Quantization we donot change Bias. Pruning focus on weights only, while Quantization focus on weights + Activations both.</b><br><br>
-	    
-	    Pruning can be done both during inference or at fine-tune/training as well.</b><br>
-	    <b>Unstructured Pruning:</b> Removes individual weights to zero, makes matrix sparse, matrix shape remain same, so computation remains same, donot give real speedup, reserach purpose used, 						accuracy is more, at each layer applied.<br>
-	    <b>Structured Pruning:</b> Removes whole neurons / filters / channels, actual speed up, size shrink for effective pruned model, accuracy is less, at each layer applied.<br>
-	    <b>Global Pruning (Prefered One):</b> Unstructured Pruning, applied across multiple layers of model.<br><br>
-	    
-	    <b>Quantization:</b> Quantization Scaling Factors<br>
-	    <b>Static Quantization  (Post Training Method):</b> weights (pre-compute) + activations (pre-compute) use Caliber over test_loader, Need of QuantStub and deQuantStub, Ex Computer Vision<br>
-	    <b>Dynamic Quantization (Post Training Method):</b> weights(pre-compute) + activations (dynamic-compute), Ex NLP, LLM<br>
-	    <b>QAT:</b> Quantization Aware Training, form of Static Quantization fuse_model (Conv+BN+ReLU, Conv+BN, Conv+ReLU, Linear+ReLU), Need of QuantStub and deQuantStub<br><br>
-	    
-	    <b>6. Five types of model:</b> Regression, Classification, Embedding, Segmentation.<br>
-	    <b>6.1) Regression:</b> Mean Squared Error Loss Function<br>
-	    <b>6.2) Classification:</b> CrossEntropyLoss<br>
-	    <b>6.3) Embedding (Margin Based):</b> TripletMarginLoss, Contrastive Loss, (Softmax with Additive Angular Margin + CrossEntropy : ArcFace)<br>
-	    <b>6.4) Segmentation:</b> Soft Dice Loss, U-Net, only Convolution Layers<br>
-	    <b>6.5) Medical Prognosis: (Label : Time, Event)</b><br>
-	    a) Linear Regression (beta@X.T)<br>
-	    b) Negative partial log-likelihood (-log(L(beta))), here L(beta) is likelihood, only events used.<br>
-	    c) Newton–Raphson (second-order optimization)<br>
-	    d) Hazard Ratio, Survival Time, Survival Probability<br>
-	    e) event = death, censored = alive, till study duration<br>
-	    f) c-index, concordant pairs, permissible pairs, risk tie<br><br>
-	    
-	    7. We can use <b>ROC (Receiver Operating Characteristic)</b> to have graph between True Positive Rate, False Positive Rate, then we find closet point to (0,1), so we get threshold beyond which 1 else 0 for output class.<br>
-	    <b>(threshold, (False Positive Rate, True Positive Rate))</b>, this is how we can choose threshold, AUC is area under curve of ROC.<br><br>
-	    
-	    8. <b>Imputations</b> is way to fill missing data say features (Age, BP), BP is missing, how we can fill ??<br>
-	    a) Mean of all BP, and fill all empty BP rows.<br>
-	    b) Regression Imputation, BP = 10*Age + 20 (Linear Regression Model).<br>
-	    c) Drop rows with missing data - Bad idea - donot use it.<br><br>
-            </p>
+         <div id="evolution" class="tab-content">
+            <div class="card">
+               <h2>Evolution of NLP</h2>
+               <p>
+                  <b>1. Frequency based Vectors:</b> TF-IDF, BM25 etc, for each sentence one Frequency vector, we donot call it embedding vector as no semantic meaning.
+                  Size of Vector is V : Vocabulary Size and Sparse, we cannot compress to small dimension D becoz it donot contain any semantic information.<br>
+                  Remove Stopword/lemmitization because they are noise as embedding depend upon frequency of token<br><br>
+                  <b>2. Static Embeddings (Semantic but not contextual):</b> Word2Vec, Glove etc, for each token one embedding vector. <b>(Single One Co-occurance Matrix for entire training corpus)</b>
+                  As each token represents static embedding, donot have context from other tokens of sentence, so to get Sentence Static Embedding we apply Pooling (Mean/Max/Sum) etc over all computed token embeddings of sentence.<br>
+                  <b>Drawback:</b> Its same for every token irrespective of words-context how and where it is used.<br>
+                  Size of Co-occurance Matrix is V*V : Size of Vocabulary, these sparse vectors are convert for each token from V size to D, Dense Vectors which are used as inputs to MLP.<br><br>
+                  <b>3. Contextual Embeddings (Semantic and Contextual): RNN/LSTM</b>, for each token one embedding vector. Not use positional encoding because its sequential so now the positions of tokens. (hidden layer provide contextual embedding)<br>
+                  <b>Drawback:</b> Not scalable, sequential, slow to train<br><br>
+                  <b>4. Contextual Embedding using Attention (Semantic and Contextual):</b>4.Transformers (Scalable, Parallel not Sequential). We stop generating next token when we reached 
+                  <eos>
+                  or max_token_limit.<br>
+                  <b>Static Embedding Matrix (E) : E(token_id):</b> Lookup is fast as indexing is fast for integers over string. Token IDs exist only for speed, batching, and GPU efficiency<br>
+                  <b>KV Cache:</b> We cache K,V values for all the previous tokens, then just compute K,V values for new token at a time and reuse cached K,V values for previous token then we apply attention formula. (Speed Up)<br>
+                  Dimension of Static Embedding : V * d_model<br>
+                  Dimension of Positional Embedding : Context_Window * d_model<br>
+                  Static Embedding + Positional Embedding + Segment Embedding == new embedding vector + Attention  == Contextual Embedding<br><br>
+                  <b>Encoder Only (Bidirectional)</b><br>
+                  1. Sees left and right context.<br>
+                  2. BERT does not do next-token prediction.<br>
+                  3. Predict token : use that token’s embedding.<br>
+                  4. Predict sentence : use [CLS] embedding.<br>
+                  5. Middle token see more context then last token.<br><br>
+                  <b>Decorder Only (Unidirectional : left to right) / autoregressive</b><br>
+                  1. The last token embedding has seen all previous tokens, last token itself summary token.<br>
+                  2. Attention mask is left-to-right.<br>
+                  3. No [cls] and [sep] tokens at start and end.<br>
+                  a) "I love machine learning"<br>
+                  b) ['I', 'Ġlove', 'Ġmachine', 'Ġlearning']<br>
+                  c) G’ means space before the word<br>
+                  d) [40, 1842, 4570, 4673]<br><br>
+                  <b>Contextual Embedding</b> single token is sufficent to sentence summary classification.<br>
+                  <b>Static Embedding</b> Pool of all token embeddings is required to get sentence summary classification.<br><br>
+                  <b>5. In both Pruning and Quantization we donot change Bias. Pruning focus on weights only, while Quantization focus on weights + Activations both.</b><br><br>
+                  Pruning can be done both during inference or at fine-tune/training as well.</b><br>
+                  <b>Unstructured Pruning:</b> Removes individual weights to zero, makes matrix sparse, matrix shape remain same, so computation remains same, donot give real speedup, reserach purpose used, 						accuracy is more, at each layer applied.<br>
+                  <b>Structured Pruning:</b> Removes whole neurons / filters / channels, actual speed up, size shrink for effective pruned model, accuracy is less, at each layer applied.<br>
+                  <b>Global Pruning (Prefered One):</b> Unstructured Pruning, applied across multiple layers of model.<br><br>
+                  <b>Quantization:</b> Quantization Scaling Factors<br>
+                  <b>Static Quantization  (Post Training Method):</b> weights (pre-compute) + activations (pre-compute) use Caliber over test_loader, Need of QuantStub and deQuantStub, Ex Computer Vision<br>
+                  <b>Dynamic Quantization (Post Training Method):</b> weights(pre-compute) + activations (dynamic-compute), Ex NLP, LLM<br>
+                  <b>QAT:</b> Quantization Aware Training, form of Static Quantization fuse_model (Conv+BN+ReLU, Conv+BN, Conv+ReLU, Linear+ReLU), Need of QuantStub and deQuantStub<br><br>
+                  <b>6. Five types of model:</b> Regression, Classification, Embedding, Segmentation.<br>
+                  <b>6.1) Regression:</b> Mean Squared Error Loss Function<br>
+                  <b>6.2) Classification:</b> CrossEntropyLoss<br>
+                  <b>6.3) Embedding (Margin Based):</b> TripletMarginLoss, Contrastive Loss, (Softmax with Additive Angular Margin + CrossEntropy : ArcFace)<br>
+                  <b>6.4) Segmentation:</b> Soft Dice Loss, U-Net, only Convolution Layers<br>
+                  <b>6.5) Medical Prognosis: (Label : Time, Event)</b><br>
+                  a) Linear Regression (beta@X.T)<br>
+                  b) Negative partial log-likelihood (-log(L(beta))), here L(beta) is likelihood, only events used.<br>
+                  c) Newton–Raphson (second-order optimization)<br>
+                  d) Hazard Ratio, Survival Time, Survival Probability<br>
+                  e) event = death, censored = alive, till study duration<br>
+                  f) c-index, concordant pairs, permissible pairs, risk tie<br><br>
+                  7. We can use <b>ROC (Receiver Operating Characteristic)</b> to have graph between True Positive Rate, False Positive Rate, then we find closet point to (0,1), so we get threshold beyond which 1 else 0 for output class.<br>
+                  <b>(threshold, (False Positive Rate, True Positive Rate))</b>, this is how we can choose threshold, AUC is area under curve of ROC.<br><br>
+                  8. <b>Imputations</b> is way to fill missing data say features (Age, BP), BP is missing, how we can fill ??<br>
+                  a) Mean of all BP, and fill all empty BP rows.<br>
+                  b) Regression Imputation, BP = 10*Age + 20 (Linear Regression Model).<br>
+                  c) Drop rows with missing data - Bad idea - donot use it.<br><br>
+               </p>
+            </div>
+         </div>
+         <div id="face-ai-demo" class="tab-content">
+            <div class="iframe-wrapper">
+               <iframe
+                  src="https://ginnigarg-facial-recognisation-portfolio.hf.space"
+                  allow="camera; microphone"
+                  loading="lazy">
+               </iframe>
+            </div>
          </div>
       </div>
-      
-      <div id="face-ai-demo" class="tab-content">
-	  <div class="iframe-wrapper">
-	    <iframe
-	      src="https://ginnigarg-facial-recognisation-portfolio.hf.space"
-	      allow="camera; microphone"
-	      loading="lazy">
-	    </iframe>
-	  </div>
-      </div>
-
-      </div>
-      
       <!-- Floating Chatbot Code (place here) -->
       <div class="chatbot-widget">
          <div class="chatbot-header" onclick="toggleChatbot()">
