@@ -392,11 +392,26 @@
          <div id="projects" class="tab-content">
             <div class="card">
                <h2>Highlighted Projects</h2>
-               <h3>Name Similarity & Intelligent Name Matching using Fine-Tuned MPNet (mpnet-base-v2)</h3>
+               <h3>Name Similarity & Intelligent Name Matching using Fine-Tuned MPNet (Contrastive Loss)</h3>
                <p>Fine-tuned the MPNet Base v2 transformer model for a high-accuracy Name Similarity task to solve real-world name matching challenges such as token shuffling, spacing inconsistencies, honorific prefixes, and partial name variations. Expanded the dataset from 60K to 80K+ records through targeted augmentation applied to matched-name pairs (label = 1), including space removal (e.g., “RAHUL SHARMA” → “RAHULSHARMA”), token shuffling ("RAHUL KUMAR SHARMA" → "SHARMA RAHUL KUMAR"), middle-name dropping ("RAHUL KUMAR SHARMA" → "RAHUL SHARMA"), and random concatenation strategies ("RAHUL KUMAR SHARMA" → "RAHULKUMAR SHARMA") to improve model robustness. Implemented intelligent preprocessing by normalizing case, trimming whitespace, and removing prefixes such as mr, mrs, late, sh, lt, ensuring consistency across training and inference pipelines. Designed a dual-embedding strategy where two vectors were generated per name—(1) preprocessed original name and (2) preprocessed concatenated name—to handle structural name variations. Experimented with multiple similarity aggregation strategies and finalized a hybrid scoring formula:
                   Similarity Score = max(V1, V2, mean(V1, V2)), which outperformed individual and mean-based approaches. Optimized contrastive loss by auto-computing the margin (0.62) from training/validation distributions instead of using a fixed heuristic margin (0.5), improving class separation. Achieved outstanding performance with AUC: 0.9991, Accuracy: 99%, and optimal threshold 0.8383, demonstrating production-grade reliability for large-scale identity matching systems such as TSP-based embedding pipelines.<br>
-                  <b>Tech:</b> mpnet-base-v2, Fine-Tune, Augmentation, Preprocessing, AUC-ROC, Recall/Precision, Hyper-parameter Tuning (Margin) for Contrastive Loss		
+                  <b>Tech:</b> mpnet-base-v2, Fine-Tune, Augmentation, Preprocessing, AUC-ROC, Recall/Precision, Hyper-parameter Tuning (Margin) for Contrastive Loss, Google Collab (T4)	
                </p>
+               
+               <h3>AI-Based Name Matching System using Fine-Tuned MPNet (Triplet Margin Loss)</h3>
+               <p>
+               <ul>
+               <li>Developed an AI-driven name matching system by fine-tuning the sentence-transformers/mpnet-base-v2 model on a custom dataset of 75K+ samples, consisting of all possible matching name combinations within clusters along with randomly generated unmatched name pairs.</li>
+               <li>Implemented Triplet Margin Loss with Adam Optimizer for training and performed hyperparameter tuning, identifying an optimal margin value of 0.1 for improved embedding separation.</li>		
+               <li>Achieved strong model performance with Precision: 0.9906, Recall: 0.9853, F1 Score: 0.9879, and ROC-AUC: 0.9992, with an optimal similarity threshold of 0.694 for match classification.</li>
+               <li>Designed an efficient inference pipeline with domain-specific preprocessing including normalization and removal of honorific tokens (late, sh, lt, mr, mrs, etc.) to improve embedding consistency.</li>
+               <li>Generated two embeddings per name (preprocessed original name and concatenated variant) and computed similarity using the maximum similarity score across both vectors to improve matching robustness.</li>
+               <li>Evaluated data augmentation strategies but determined best performance without augmentation, leading to improved real-world inference accuracy.</li>
+               <li>Delivered a high-precision entity resolution solution suitable for applications such as identity matching, deduplication, and record linkage in large-scale datasets.</li>
+               </ul>
+               <b>Tech:</b> mpnet-base-v2, Fine-Tune, Preprocessing, AUC-ROC, Recall/Precision, Hyper-parameter Tuning (Margin) for Triplet Margin Loss, Google Collab (T4)
+               </p>
+               
                <h3>Semantic Search Engine and Question-Answering over Github DataSets/issues</h3>
                <p>Developed a Semantic Search Engine to get best n=5 matching issues for user search from Github huggingface DataSets repo using FAISS index, further In-context learning is used to have question answering system over n matching issues for particular user search using T-5 model. App is deployed over Hugging Face Spaces. Further preprocessed data of github hugging_face dataset repo is pushed to huggingface hub.<br>
                   <b>Tech:</b> Gradio, DataSets, Cosine Similarity, Cls_Pool (model: sentence-transformers/multi-qa-mpnet-base-dot-v1), Hugging Face Hub, T-5 for QA,  FAISS.
