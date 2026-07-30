@@ -222,6 +222,25 @@
          .chatbot-toggle:hover {
          transform: scale(1.1);
          }
+         
+         
+         .book-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin: 15px 0;
+		}
+
+		.book-links a {
+		text-decoration: none;
+		font-weight: 600;
+		}
+
+		.book-topics {
+		margin-top: 15px;
+	}
+		 
+         
          /* Responsive iframe container */
          .iframe-wrapper {
          position: relative;
@@ -756,6 +775,30 @@
          <!-- Research -->
          <div id="research" class="tab-content">
             <div class="card">
+		    <h2>Published Book</h2>
+
+		    <h3>Modern AI Using PyTorch: Building Intelligent Systems with Transformers</h3>
+
+		    <div class="book-links">
+			<a href="https://www.amazon.com/dp/B0H8J3N371" target="_blank">🌍 International Edition</a>
+			<a href="https://www.amazon.in/Modern-Using-PyTorch-Ginni-Garg/dp/9361230891/" target="_blank">🇮🇳 Indian Edition</a>
+			<a href="https://play.google.com/store/books/details?id=bt30EQAAQBAJ" target="_blank">📖 E-Book</a>
+		    </div>
+
+		    <ul class="book-topics">
+			<li>Python programming fundamentals and mathematical foundations</li>
+			<li>Linear algebra, tensors, and automatic differentiation</li>
+			<li>Neural networks and optimization from scratch</li>
+			<li>Transformer architecture and self-attention mechanisms</li>
+			<li>Building a LLaMA-style Large Language Model from scratch</li>
+			<li>Tokenization using Byte Pair Encoding (BPE)</li>
+			<li>End-to-end LLM pretraining</li>
+			<li>Supervised Fine-Tuning (SFT)</li>
+			<li>Direct Preference Optimization (DPO) for aligning language models with human preferences</li>
+		    </ul>
+	    </div>
+         
+            <div class="card">
                <h2>Research Papers</h2>
                <h3>Land Cover Classification using Satellite Images and Hybrid MLP-SVM Classifier</h3>
                <a href="https://arxiv.org/abs/2101.00214" target="_blank">Research Paper</a>
@@ -835,6 +878,8 @@
                   <li>"Who Will Cry When You Die" by Robin Sharma</li>
                   <li>"Elon Musk" by Isaacson Walter</li>
                   <li>"Range" by Epstein David</li>
+                  <li>"Ratan Tata a Complete Biography" by A.K. Gandhi,</li>
+                  <li> "The Thinking Machine: Jensen Huang, Nvidia, And The World’s Most Coveted Microchip" by Stephen Witt</li>
                </ul>
             </div>
          </div>
